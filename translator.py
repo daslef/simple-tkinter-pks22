@@ -1,3 +1,5 @@
+
+"""Импорт разнообразных приблуд, дополнений, фич"""
 import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter import messagebox
@@ -12,9 +14,9 @@ def translate_api_call(text, direction):
         raise requests.HTTPError
     return r.json()['text'][0]
 
-
+"""Создадим функцию"""
 def translate_text():
-
+  """"""
     current_tab_index = notebook.index(notebook.select())
     current_tab_object = notebook.winfo_children()[current_tab_index]
     required_tab_object = notebook.winfo_children()[not(current_tab_index)]
@@ -45,15 +47,17 @@ root.geometry('500x300')
 root.resizable(False, False)
 
 notebook = ttk.Notebook(root)
-frame_en = tk.Frame(notebook)
+frame_en = tk.Frame(notebook) """"Здесь родитель не корень а нотебук"""
 frame_ru = tk.Frame(notebook)
-text_en = tk.Text(frame_en)
+text_en = tk.Text(frame_en) """А хдесь вообще фрейм"""
 text_ru = tk.Text(frame_ru)
-button = tk.Button(root, text='Translate!', command=translate_text)
+button = tk.Button(root, text='Translate!', command=translate_text)"""Это мы создаем кнопку,
+                                                                   ее родитель корень, она содержит в себе выполнение функции, 
+                                                                   которую мы самостоятельно создали выше"""
 
-button.pack(side=tk.BOTTOM, fill=tk.X, expand=True)
+button.pack(side=tk.BOTTOM, fill=tk.X, expand=True)"""Пакуем кнопку, делаем заполнение"""
 frame_en.pack(fill=tk.BOTH)
-frame_ru.pack(fill=tk.BOTH)
+frame_ru.pack(fill=tk.BOTH)  """Пакуем все на свете"""
 text_en.pack(fill=tk.BOTH)
 text_ru.pack(fill=tk.BOTH)
 
@@ -61,6 +65,6 @@ notebook.add(frame_en, text='English')
 notebook.add(frame_ru, text='Russian')
 notebook.pack(fill=tk.BOTH)
 
-text_en.focus_set()
+text_en.focus_set() """Делаем так чтобы можно бло сразу вводить текст без всяких кликов"""
 
 root.mainloop()
